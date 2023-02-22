@@ -5417,6 +5417,7 @@ self.C3_GetObjectRefTable = function () {
 		C3.Plugins.Sprite.Exps.Opacity,
 		C3.Plugins.Touch.Cnds.OnTouchStart,
 		C3.Plugins.Touch.Cnds.IsTouchingObject,
+		C3.Plugins.Sprite.Cnds.IsBoolInstanceVarSet,
 		C3.Plugins.Touch.Exps.AbsoluteX,
 		C3.Plugins.PlatformInfo.Exps.CanvasCssWidth,
 		C3.Plugins.Touch.Exps.AbsoluteY,
@@ -5424,7 +5425,6 @@ self.C3_GetObjectRefTable = function () {
 		C3.Plugins.Sprite.Acts.SetBoolInstanceVar,
 		C3.Plugins.Touch.Exps.TouchIndex,
 		C3.Plugins.Touch.Cnds.HasNthTouch,
-		C3.Plugins.Sprite.Cnds.IsBoolInstanceVarSet,
 		C3.Plugins.System.Cnds.Compare,
 		C3.Plugins.Touch.Exps.AbsoluteXAt,
 		C3.Behaviors.EightDir.Acts.SetVectorX,
@@ -6063,20 +6063,16 @@ self.C3_ExpressionFuncs = [
 		p => {
 			const n0 = p._GetNode(0);
 			const n1 = p._GetNode(1);
-			const f2 = p._GetNode(2).GetBoundMethod();
+			const n2 = p._GetNode(2);
 			const n3 = p._GetNode(3);
-			const f4 = p._GetNode(4).GetBoundMethod();
-			const n5 = p._GetNode(5);
-			return () => (C3.clamp(C3.distanceTo(n0.ExpInstVar(), n1.ExpInstVar(), ((f2(n3.ExpInstVar()) / f4()) * 480), n5.ExpInstVar()), (-100), 100) * (-2));
+			return () => (C3.clamp(C3.distanceTo(n0.ExpInstVar(), n1.ExpInstVar(), n2.ExpObject(), n3.ExpInstVar()), (-100), 100) * (-2));
 		},
 		p => {
 			const n0 = p._GetNode(0);
 			const n1 = p._GetNode(1);
-			const f2 = p._GetNode(2).GetBoundMethod();
+			const n2 = p._GetNode(2);
 			const n3 = p._GetNode(3);
-			const f4 = p._GetNode(4).GetBoundMethod();
-			const n5 = p._GetNode(5);
-			return () => (C3.clamp(C3.distanceTo(n0.ExpInstVar(), n1.ExpInstVar(), ((f2(n3.ExpInstVar()) / f4()) * 480), n5.ExpInstVar()), (-100), 100) * 2);
+			return () => (C3.clamp(C3.distanceTo(n0.ExpInstVar(), n1.ExpInstVar(), n2.ExpObject(), n3.ExpInstVar()), (-100), 100) * 2);
 		},
 		p => {
 			const f0 = p._GetNode(0).GetBoundMethod();
@@ -6088,19 +6084,15 @@ self.C3_ExpressionFuncs = [
 			const n0 = p._GetNode(0);
 			const n1 = p._GetNode(1);
 			const n2 = p._GetNode(2);
-			const f3 = p._GetNode(3).GetBoundMethod();
-			const n4 = p._GetNode(4);
-			const f5 = p._GetNode(5).GetBoundMethod();
-			return () => (C3.clamp(C3.distanceTo(n0.ExpInstVar(), n1.ExpInstVar(), n2.ExpInstVar(), ((f3(n4.ExpInstVar()) / f5()) * 270)), (-100), 100) * (-2));
+			const n3 = p._GetNode(3);
+			return () => (C3.clamp(C3.distanceTo(n0.ExpInstVar(), n1.ExpInstVar(), n2.ExpInstVar(), n3.ExpObject()), (-100), 100) * (-2));
 		},
 		p => {
 			const n0 = p._GetNode(0);
 			const n1 = p._GetNode(1);
 			const n2 = p._GetNode(2);
-			const f3 = p._GetNode(3).GetBoundMethod();
-			const n4 = p._GetNode(4);
-			const f5 = p._GetNode(5).GetBoundMethod();
-			return () => (C3.clamp(C3.distanceTo(n0.ExpInstVar(), n1.ExpInstVar(), n2.ExpInstVar(), ((f3(n4.ExpInstVar()) / f5()) * 270)), (-100), 100) * 2);
+			const n3 = p._GetNode(3);
+			return () => (C3.clamp(C3.distanceTo(n0.ExpInstVar(), n1.ExpInstVar(), n2.ExpInstVar(), n3.ExpObject()), (-100), 100) * 2);
 		},
 		() => 40,
 		() => 230,
