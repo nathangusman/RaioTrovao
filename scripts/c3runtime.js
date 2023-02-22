@@ -5393,6 +5393,9 @@ self.C3_GetObjectRefTable = function () {
 		C3.Behaviors.Tween,
 		C3.Plugins.System.Cnds.OnLayoutStart,
 		C3.Plugins.Shape3D.Acts.Destroy,
+		C3.Plugins.Touch.Cnds.OnTouchStart,
+		C3.Plugins.Keyboard.Cnds.OnAnyKey,
+		C3.Plugins.Audio.Cnds.IsAnyPlaying,
 		C3.Plugins.Audio.Acts.Play,
 		C3.Plugins.System.Cnds.EveryTick,
 		C3.Plugins.Shape3D.Acts.SetPos,
@@ -5403,7 +5406,6 @@ self.C3_GetObjectRefTable = function () {
 		C3.Plugins.Sprite.Acts.SetInstanceVar,
 		C3.Plugins.System.Exps.time,
 		C3.Plugins.Sprite.Acts.SetPos,
-		C3.Plugins.Audio.Cnds.IsAnyPlaying,
 		C3.Plugins.System.Cnds.TriggerOnce,
 		C3.Plugins.System.Cnds.IsGroupActive,
 		C3.Plugins.Sprite.Cnds.CompareInstanceVar,
@@ -5415,8 +5417,7 @@ self.C3_GetObjectRefTable = function () {
 		C3.Plugins.Sprite.Cnds.CompareOpacity,
 		C3.Plugins.Sprite.Acts.SetOpacity,
 		C3.Plugins.Sprite.Exps.Opacity,
-		C3.Plugins.Touch.Cnds.OnTouchStart,
-		C3.Plugins.Touch.Cnds.IsTouchingObject,
+		C3.Plugins.Touch.Cnds.OnTouchObject,
 		C3.Plugins.Sprite.Cnds.IsBoolInstanceVarSet,
 		C3.Plugins.Touch.Exps.AbsoluteX,
 		C3.Plugins.PlatformInfo.Exps.CanvasCssWidth,
@@ -5424,14 +5425,14 @@ self.C3_GetObjectRefTable = function () {
 		C3.Plugins.PlatformInfo.Exps.CanvasCssHeight,
 		C3.Plugins.Sprite.Acts.SetBoolInstanceVar,
 		C3.Plugins.Touch.Exps.TouchID,
-		C3.Plugins.Touch.Cnds.HasNthTouch,
-		C3.Plugins.System.Cnds.Compare,
 		C3.Plugins.Touch.Exps.AbsoluteXForID,
+		C3.Plugins.Touch.Exps.AbsoluteYForID,
+		C3.Plugins.System.Cnds.Compare,
 		C3.Behaviors.EightDir.Acts.SetVectorX,
 		C3.Plugins.System.Cnds.Else,
-		C3.Plugins.Touch.Exps.AbsoluteYForID,
 		C3.Behaviors.EightDir.Acts.SetVectorY,
-		C3.Plugins.Touch.Cnds.OnNthTouchEnd,
+		C3.Plugins.Touch.Cnds.OnTouchEnd,
+		C3.Plugins.Touch.Cnds.IsTouchingObject,
 		C3.Plugins.System.Cnds.Every,
 		C3.Plugins.System.Acts.CreateObject,
 		C3.Plugins.Keyboard.Cnds.IsKeyDown,
@@ -5497,9 +5498,9 @@ self.C3_GetObjectRefTable = function () {
 		C3.Plugins.Sprite.Exps.BBoxTop,
 		C3.Plugins.Arr.Acts.SetInstanceVar,
 		C3.Plugins.Arr.Acts.SetSize,
-		C3.ScriptsInEvents.E_main_Event173_Act1,
+		C3.ScriptsInEvents.E_main_Event175_Act1,
 		C3.Plugins.Arr.Acts.SetXY,
-		C3.ScriptsInEvents.E_main_Event182_Act1,
+		C3.ScriptsInEvents.E_main_Event184_Act1,
 		C3.Plugins.AdvancedRandom.Acts.SetOctaves,
 		C3.Plugins.AdvancedRandom.Acts.SetSeed,
 		C3.Plugins.System.Acts.SetFunctionReturnValue,
@@ -6051,14 +6052,16 @@ self.C3_ExpressionFuncs = [
 			return () => ((f0() / f1()) * 270);
 		},
 		p => {
-			const n0 = p._GetNode(0);
-			return () => (n0.ExpInstVar() - 1);
+			const f0 = p._GetNode(0).GetBoundMethod();
+			const n1 = p._GetNode(1);
+			const f2 = p._GetNode(2).GetBoundMethod();
+			return () => ((f0(n1.ExpInstVar()) / f2()) * 480);
 		},
 		p => {
 			const f0 = p._GetNode(0).GetBoundMethod();
 			const n1 = p._GetNode(1);
 			const f2 = p._GetNode(2).GetBoundMethod();
-			return () => ((f0(n1.ExpInstVar()) / f2()) * 480);
+			return () => ((f0(n1.ExpInstVar()) / f2()) * 270);
 		},
 		p => {
 			const n0 = p._GetNode(0);
@@ -6077,12 +6080,6 @@ self.C3_ExpressionFuncs = [
 			const n2 = p._GetNode(2);
 			const n3 = p._GetNode(3);
 			return () => (C3.clamp(C3.distanceTo(n0.ExpInstVar(), n1.ExpInstVar(), n2.ExpObject(), n3.ExpInstVar()), (-100), 100) * 2);
-		},
-		p => {
-			const f0 = p._GetNode(0).GetBoundMethod();
-			const n1 = p._GetNode(1);
-			const f2 = p._GetNode(2).GetBoundMethod();
-			return () => ((f0(n1.ExpInstVar()) / f2()) * 270);
 		},
 		p => {
 			const n0 = p._GetNode(0);
@@ -6334,6 +6331,10 @@ self.C3_ExpressionFuncs = [
 		p => {
 			const v0 = p._GetNode(0).GetVar();
 			return () => (v0.GetValue() - 2);
+		},
+		p => {
+			const n0 = p._GetNode(0);
+			return () => (n0.ExpInstVar() - 1);
 		},
 		p => {
 			const f0 = p._GetNode(0).GetBoundMethod();
