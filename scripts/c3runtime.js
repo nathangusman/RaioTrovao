@@ -5423,13 +5423,13 @@ self.C3_GetObjectRefTable = function () {
 		C3.Plugins.Touch.Exps.AbsoluteY,
 		C3.Plugins.PlatformInfo.Exps.CanvasCssHeight,
 		C3.Plugins.Sprite.Acts.SetBoolInstanceVar,
-		C3.Plugins.Touch.Exps.TouchIndex,
+		C3.Plugins.Touch.Exps.TouchID,
 		C3.Plugins.Touch.Cnds.HasNthTouch,
 		C3.Plugins.System.Cnds.Compare,
-		C3.Plugins.Touch.Exps.AbsoluteXAt,
+		C3.Plugins.Touch.Exps.AbsoluteXForID,
 		C3.Behaviors.EightDir.Acts.SetVectorX,
 		C3.Plugins.System.Cnds.Else,
-		C3.Plugins.Touch.Exps.AbsoluteYAt,
+		C3.Plugins.Touch.Exps.AbsoluteYForID,
 		C3.Behaviors.EightDir.Acts.SetVectorY,
 		C3.Plugins.Touch.Cnds.OnNthTouchEnd,
 		C3.Plugins.System.Cnds.Every,
@@ -5497,9 +5497,9 @@ self.C3_GetObjectRefTable = function () {
 		C3.Plugins.Sprite.Exps.BBoxTop,
 		C3.Plugins.Arr.Acts.SetInstanceVar,
 		C3.Plugins.Arr.Acts.SetSize,
-		C3.ScriptsInEvents.E_main_Event174_Act1,
+		C3.ScriptsInEvents.E_main_Event172_Act1,
 		C3.Plugins.Arr.Acts.SetXY,
-		C3.ScriptsInEvents.E_main_Event183_Act1,
+		C3.ScriptsInEvents.E_main_Event181_Act1,
 		C3.Plugins.AdvancedRandom.Acts.SetOctaves,
 		C3.Plugins.AdvancedRandom.Acts.SetSeed,
 		C3.Plugins.System.Acts.SetFunctionReturnValue,
@@ -6052,13 +6052,17 @@ self.C3_ExpressionFuncs = [
 		},
 		p => {
 			const n0 = p._GetNode(0);
-			return () => n0.ExpInstVar();
+			return () => (n0.ExpInstVar() - 1);
 		},
 		p => {
 			const f0 = p._GetNode(0).GetBoundMethod();
 			const n1 = p._GetNode(1);
 			const f2 = p._GetNode(2).GetBoundMethod();
 			return () => ((f0(n1.ExpInstVar()) / f2()) * 480);
+		},
+		p => {
+			const n0 = p._GetNode(0);
+			return () => n0.ExpInstVar();
 		},
 		p => {
 			const n0 = p._GetNode(0);
@@ -6330,10 +6334,6 @@ self.C3_ExpressionFuncs = [
 		p => {
 			const v0 = p._GetNode(0).GetVar();
 			return () => (v0.GetValue() - 2);
-		},
-		p => {
-			const n0 = p._GetNode(0);
-			return () => (n0.ExpInstVar() - 1);
 		},
 		p => {
 			const f0 = p._GetNode(0).GetBoundMethod();
