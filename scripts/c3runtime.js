@@ -5424,6 +5424,7 @@ self.C3_GetObjectRefTable = function () {
 		C3.Plugins.Sprite.Acts.SetBoolInstanceVar,
 		C3.Plugins.Touch.Exps.TouchIndex,
 		C3.Plugins.Touch.Cnds.HasNthTouch,
+		C3.Plugins.Sprite.Cnds.IsBoolInstanceVarSet,
 		C3.Plugins.System.Cnds.Compare,
 		C3.Plugins.Touch.Exps.AbsoluteXAt,
 		C3.Behaviors.EightDir.Acts.SetVectorX,
@@ -5459,7 +5460,6 @@ self.C3_GetObjectRefTable = function () {
 		C3.Behaviors.Timer.Cnds.OnTimer,
 		C3.Plugins.Sprite.Acts.SetPosToObject,
 		C3.Plugins.Sprite.Acts.AddChild,
-		C3.Plugins.Sprite.Acts.SetAnim,
 		C3.Plugins.System.Exps.layoutwidth,
 		C3.Plugins.System.Exps.layoutheight,
 		C3.Plugins.System.Acts.SetVar,
@@ -5485,6 +5485,7 @@ self.C3_GetObjectRefTable = function () {
 		C3.Plugins.Sprite.Exps.UID,
 		C3.Plugins.Arr.Exps.At,
 		C3.Plugins.Arr.Exps.Width,
+		C3.Plugins.Sprite.Acts.SetAnim,
 		C3.Plugins.Camera3D.Acts.LookAtPosition,
 		C3.Plugins.Sprite.Cnds.PickByUID,
 		C3.Plugins.System.Exps.random,
@@ -5496,9 +5497,9 @@ self.C3_GetObjectRefTable = function () {
 		C3.Plugins.Sprite.Exps.BBoxTop,
 		C3.Plugins.Arr.Acts.SetInstanceVar,
 		C3.Plugins.Arr.Acts.SetSize,
-		C3.ScriptsInEvents.E_main_Event172_Act1,
+		C3.ScriptsInEvents.E_main_Event173_Act1,
 		C3.Plugins.Arr.Acts.SetXY,
-		C3.ScriptsInEvents.E_main_Event181_Act1,
+		C3.ScriptsInEvents.E_main_Event182_Act1,
 		C3.Plugins.AdvancedRandom.Acts.SetOctaves,
 		C3.Plugins.AdvancedRandom.Acts.SetSeed,
 		C3.Plugins.System.Acts.SetFunctionReturnValue,
@@ -5633,8 +5634,6 @@ self.C3_JsPropNameTable = [
 	{engine: 0},
 	{thrust: 0},
 	{weapon: 0},
-	{xOffset: 0},
-	{projectile: 0},
 	{tunnel_uPosition: 0},
 	{Keyboard: 0},
 	{playerSpeed: 0},
@@ -5678,7 +5677,6 @@ self.C3_JsPropNameTable = [
 	{Tween: 0},
 	{tunnels: 0},
 	{tunnelData: 0},
-	{projectiles: 0},
 	{splineFocusX: 0},
 	{splineFocusY: 0},
 	{splineFocusZ: 0},
@@ -6160,7 +6158,6 @@ self.C3_ExpressionFuncs = [
 		() => 1,
 		() => "tunnel",
 		() => "tunnel_init",
-		() => "power",
 		p => {
 			const f0 = p._GetNode(0).GetBoundMethod();
 			return () => (f0() / 2);
@@ -6298,6 +6295,7 @@ self.C3_ExpressionFuncs = [
 			return () => (n0.ExpInstVar() / n1.ExpInstVar());
 		},
 		() => "tunnel_camera",
+		() => "power",
 		() => -90,
 		p => {
 			const v0 = p._GetNode(0).GetVar();
