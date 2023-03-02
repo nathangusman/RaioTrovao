@@ -5548,6 +5548,7 @@ self.C3_GetObjectRefTable = function () {
 		C3.Plugins.Sprite.Acts.SetInstanceVar,
 		C3.Plugins.System.Exps.time,
 		C3.Plugins.Sprite.Cnds.CompareInstanceVar,
+		C3.Plugins.Text.Acts.SetText,
 		C3.Plugins.NinePatch.Cnds.OnCreated,
 		C3.Plugins.Text.Acts.SetSize,
 		C3.Plugins.NinePatch.Exps.Width,
@@ -5555,7 +5556,6 @@ self.C3_GetObjectRefTable = function () {
 		C3.Plugins.Text.Acts.SetPos,
 		C3.Plugins.NinePatch.Exps.X,
 		C3.Plugins.NinePatch.Exps.Y,
-		C3.Plugins.Text.Acts.SetText,
 		C3.Plugins.NinePatch.Acts.AddChild,
 		C3.Plugins.System.Cnds.IsGroupActive,
 		C3.Plugins.System.Acts.Wait,
@@ -5618,6 +5618,10 @@ self.C3_GetObjectRefTable = function () {
 		C3.Plugins.Shape3D.Acts.AddChild,
 		C3.Plugins.Shape3D.Cnds.IsBetweenAngles,
 		C3.Behaviors.Rotate.Acts.SetSpeed,
+		C3.Plugins.Browser.Cnds.IsFullscreen,
+		C3.Plugins.Browser.Acts.CancelFullScreen,
+		C3.Plugins.Browser.Acts.RequestFullScreen,
+		C3.Plugins.System.Acts.GoToLayout,
 		C3.Plugins.Sprite.Cnds.CompareOpacity,
 		C3.Plugins.Sprite.Acts.SetOpacity,
 		C3.Plugins.Sprite.Exps.Opacity,
@@ -5628,7 +5632,6 @@ self.C3_GetObjectRefTable = function () {
 		C3.Plugins.Text.Acts.SetVAlign,
 		C3.Plugins.Text.Acts.SetHAlign,
 		C3.Plugins.NinePatch.Acts.SetPos,
-		C3.Plugins.System.Acts.GoToLayout,
 		C3.Plugins.Keyboard.Cnds.OnKey,
 		C3.Plugins.System.Acts.SetTimescale,
 		C3.Plugins.System.Exps.timescale,
@@ -5670,9 +5673,9 @@ self.C3_GetObjectRefTable = function () {
 		C3.Plugins.Sprite.Exps.BBoxTop,
 		C3.Plugins.Arr.Acts.SetInstanceVar,
 		C3.Plugins.Arr.Acts.SetSize,
-		C3.ScriptsInEvents.E_main_Event235_Act1,
+		C3.ScriptsInEvents.E_main_Event240_Act1,
 		C3.Plugins.Arr.Acts.SetXY,
-		C3.ScriptsInEvents.E_main_Event244_Act1,
+		C3.ScriptsInEvents.E_main_Event249_Act1,
 		C3.Plugins.AdvancedRandom.Acts.SetOctaves,
 		C3.Plugins.AdvancedRandom.Acts.SetSeed,
 		C3.Plugins.System.Acts.SetFunctionReturnValue,
@@ -5681,9 +5684,6 @@ self.C3_GetObjectRefTable = function () {
 		C3.Plugins.AdvancedRandom.Exps.Cellular2d,
 		C3.Plugins.AdvancedRandom.Exps.Ridged2d,
 		C3.Plugins.AdvancedRandom.Exps.Voronoi2d,
-		C3.Plugins.Browser.Cnds.IsFullscreen,
-		C3.Plugins.Browser.Acts.CancelFullScreen,
-		C3.Plugins.Browser.Acts.RequestFullScreen,
 		C3.Behaviors.Timer.Acts.StartTimer,
 		C3.Plugins.Sprite.Acts.AddInstanceVar,
 		C3.Behaviors.EightDir.Acts.SetMaxSpeed,
@@ -6066,7 +6066,6 @@ function or(l, r)
 self.C3_ExpressionFuncs = [
 		() => 0,
 		() => "",
-		() => "b",
 		p => {
 			const n0 = p._GetNode(0);
 			return () => n0.ExpObject();
@@ -6086,13 +6085,13 @@ self.C3_ExpressionFuncs = [
 			return () => f0();
 		},
 		p => {
+			const n0 = p._GetNode(0);
+			return () => n0.ExpInstVar();
+		},
+		p => {
 			const f0 = p._GetNode(0).GetBoundMethod();
 			const n1 = p._GetNode(1);
 			return () => (f0() - n1.ExpInstVar());
-		},
-		p => {
-			const n0 = p._GetNode(0);
-			return () => n0.ExpInstVar();
 		},
 		() => "SongSpawnTimes",
 		() => 5.5,
@@ -6426,6 +6425,7 @@ self.C3_ExpressionFuncs = [
 		() => -40,
 		() => 320,
 		() => 330,
+		() => "UI",
 		() => "Endgame",
 		p => {
 			const n0 = p._GetNode(0);
@@ -6457,19 +6457,11 @@ self.C3_ExpressionFuncs = [
 		},
 		p => {
 			const f0 = p._GetNode(0).GetBoundMethod();
-			return () => (f0("b") - 0.5);
-		},
-		p => {
-			const f0 = p._GetNode(0).GetBoundMethod();
 			return () => (f0() + 0.5);
 		},
 		p => {
 			const f0 = p._GetNode(0).GetBoundMethod();
 			return () => (f0("") + 0.5);
-		},
-		p => {
-			const f0 = p._GetNode(0).GetBoundMethod();
-			return () => (f0("b") + 0.5);
 		},
 		() => 10,
 		() => "tunnel",
@@ -6768,7 +6760,6 @@ self.C3_ExpressionFuncs = [
 		() => "cellular",
 		() => "ridged",
 		() => "voronoi",
-		() => "UI",
 		() => -1500,
 		() => -500,
 		() => 5,
