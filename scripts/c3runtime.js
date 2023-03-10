@@ -5642,8 +5642,9 @@ self.C3_GetObjectRefTable = function () {
 		C3.Plugins.Sprite.Acts.SetX,
 		C3.Plugins.Sprite.Cnds.CompareZElevation,
 		C3.Plugins.Sprite.Acts.SetZElevation,
-		C3.Plugins.System.Cnds.ForEach,
+		C3.Plugins.Shape3D.Cnds.OnDestroyed,
 		C3.Plugins.Shape3D.Cnds.CompareInstanceVar,
+		C3.Plugins.System.Cnds.ForEach,
 		C3.Behaviors.Sin.Exps.Value,
 		C3.Behaviors.Sin.Acts.SetMagnitude,
 		C3.Behaviors.Sin.Acts.SetEnabled,
@@ -5721,9 +5722,9 @@ self.C3_GetObjectRefTable = function () {
 		C3.Plugins.Sprite.Exps.BBoxTop,
 		C3.Plugins.Arr.Acts.SetInstanceVar,
 		C3.Plugins.Arr.Acts.SetSize,
-		C3.ScriptsInEvents.E_main_Event243_Act1,
+		C3.ScriptsInEvents.E_main_Event244_Act1,
 		C3.Plugins.Arr.Acts.SetXY,
-		C3.ScriptsInEvents.E_main_Event252_Act1,
+		C3.ScriptsInEvents.E_main_Event253_Act1,
 		C3.Plugins.AdvancedRandom.Acts.SetOctaves,
 		C3.Plugins.AdvancedRandom.Acts.SetSeed,
 		C3.Plugins.System.Acts.SetFunctionReturnValue,
@@ -5954,6 +5955,7 @@ self.C3_JsPropNameTable = [
 	{UpX: 0},
 	{UpY: 0},
 	{UpZ: 0},
+	{laserVolume: 0},
 	{goStart: 0},
 	{default_tunnelCircleGranularity: 0},
 	{default_tunnelSplineGranularity: 0},
@@ -6408,7 +6410,19 @@ self.C3_ExpressionFuncs = [
 		() => "Player",
 		p => {
 			const n0 = p._GetNode(0);
+			return () => (n0.ExpObject() - 15);
+		},
+		p => {
+			const n0 = p._GetNode(0);
 			return () => (n0.ExpObject() - 20);
+		},
+		p => {
+			const n0 = p._GetNode(0);
+			return () => (n0.ExpObject() + 15);
+		},
+		p => {
+			const v0 = p._GetNode(0).GetVar();
+			return () => v0.GetValue();
 		},
 		() => "Computer",
 		p => {
@@ -6425,17 +6439,19 @@ self.C3_ExpressionFuncs = [
 			const n1 = p._GetNode(1);
 			return () => (n0.ExpObject() + n1.ExpObject());
 		},
-		() => 1,
 		p => {
 			const n0 = p._GetNode(0);
 			return () => (n0.ExpObject() - 30);
 		},
+		() => 1,
 		() => -1,
 		() => 1000,
+		() => -10,
 		() => -750,
 		() => 25,
 		() => -175,
 		() => 110,
+		() => "destroy",
 		() => "Meteor Behaviours",
 		() => "Types",
 		p => {
@@ -6574,10 +6590,6 @@ self.C3_ExpressionFuncs = [
 		p => {
 			const f0 = p._GetNode(0).GetBoundMethod();
 			return () => f0("i");
-		},
-		p => {
-			const v0 = p._GetNode(0).GetVar();
-			return () => v0.GetValue();
 		},
 		() => "level1",
 		p => {
@@ -6822,7 +6834,6 @@ self.C3_ExpressionFuncs = [
 		() => -1500,
 		() => -500,
 		() => 5,
-		() => -10,
 		() => "background",
 		() => "name",
 		() => "Ranking",
