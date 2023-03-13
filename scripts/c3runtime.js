@@ -5402,6 +5402,17 @@ return map.get(this)._IsTimerPaused(name)}getCurrentTime(name){C3X.RequireString
 }
 
 {
+'use strict';{const C3=self.C3;C3.Behaviors.Flash=class FlashBehavior extends C3.SDKBehaviorBase{constructor(opts){super(opts)}Release(){super.Release()}}}{const C3=self.C3;C3.Behaviors.Flash.Type=class FlashType extends C3.SDKBehaviorTypeBase{constructor(behaviorType){super(behaviorType)}Release(){super.Release()}OnCreate(){}}}
+{const C3=self.C3;const C3X=self.C3X;const IBehaviorInstance=self.IBehaviorInstance;C3.Behaviors.Flash.Instance=class FlashInstance extends C3.SDKBehaviorInstanceBase{constructor(behInst,properties){super(behInst);this._onTime=0;this._offTime=0;this._stage=0;this._stageTimeLeft=0;this._timeLeft=0;this._StartTicking()}Release(){super.Release()}_Flash(on,off,dur){this._onTime=on;this._offTime=off;this._stage=1;this._stageTimeLeft=off;this._timeLeft=dur;this._inst.GetWorldInfo().SetVisible(false);this._runtime.UpdateRender()}_StopFlashing(){this._timeLeft=
+0;this._inst.GetWorldInfo().SetVisible(true);this._runtime.UpdateRender()}_IsFlashing(){return this._timeLeft>0}SaveToJson(){return{"on":this._onTime,"off":this._offTime,"s":this._stage,"stl":this._stageTimeLeft,"tl":this._timeLeft}}LoadFromJson(o){this._onTime=o["on"];this._offTime=o["off"];this._stage=o["s"];this._stageTimeLeft=o["stl"];this._timeLeft=o["tl"]===null?Infinity:o["tl"]}Tick(){if(this._timeLeft<=0)return;const dt=this._runtime.GetDt(this._inst);this._timeLeft-=dt;if(this._timeLeft<=
+0){this._timeLeft=0;this._inst.GetWorldInfo().SetVisible(true);this._runtime.UpdateRender();this.DispatchScriptEvent("flashend");return this.DebugTrigger(C3.Behaviors.Flash.Cnds.OnFlashEnded)}this._stageTimeLeft-=dt;if(this._stageTimeLeft<=0){if(this._stage===0){this._inst.GetWorldInfo().SetVisible(false);this._stage=1;this._stageTimeLeft+=this._offTime}else{this._inst.GetWorldInfo().SetVisible(true);this._stage=0;this._stageTimeLeft+=this._onTime}this._runtime.UpdateRender()}}GetDebuggerProperties(){const prefix=
+"behaviors.flash.debugger";return[{title:"$"+this.GetBehaviorType().GetName(),properties:[{name:prefix+".on-time",value:this._onTime,onedit:v=>this._onTime=v},{name:prefix+".off-time",value:this._offTime,onedit:v=>this._offTime=v},{name:prefix+".is-flashing",value:this._timeLeft>0},{name:prefix+".time-left",value:this._timeLeft}]}]}GetScriptInterfaceClass(){return self.IFlashBehaviorInstance}};const map=new WeakMap;self.IFlashBehaviorInstance=class IFlashBehaviorInstance extends IBehaviorInstance{constructor(){super();
+map.set(this,IBehaviorInstance._GetInitInst().GetSdkInstance())}flash(on,off,dur){C3X.RequireFiniteNumber(on);C3X.RequireFiniteNumber(off);C3X.RequireFiniteNumber(dur);map.get(this)._Flash(on,off,dur)}stop(){map.get(this)._StopFlashing()}get isFlashing(){return map.get(this)._IsFlashing()}}}{const C3=self.C3;C3.Behaviors.Flash.Cnds={IsFlashing(){return this._IsFlashing()},OnFlashEnded(){return true}}}{const C3=self.C3;C3.Behaviors.Flash.Acts={Flash(on,off,dur){this._Flash(on,off,dur)},StopFlashing(){this._StopFlashing()}}}
+{const C3=self.C3;C3.Behaviors.Flash.Exps={}};
+
+}
+
+{
 'use strict';{const C3=self.C3;C3.Behaviors.solid=class SolidBehavior extends C3.SDKBehaviorBase{constructor(opts){super(opts)}Release(){super.Release()}}}{const C3=self.C3;C3.Behaviors.solid.Type=class SolidType extends C3.SDKBehaviorTypeBase{constructor(behaviorType){super(behaviorType)}Release(){super.Release()}OnCreate(){}}}
 {const C3=self.C3;const C3X=self.C3X;const IBehaviorInstance=self.IBehaviorInstance;const ENABLE=0;const TAGS=1;const EMPTY_SET=new Set;C3.Behaviors.solid.Instance=class SolidInstance extends C3.SDKBehaviorInstanceBase{constructor(behInst,properties){super(behInst);this.SetEnabled(true);if(properties){this.SetEnabled(properties[ENABLE]);this.SetTags(properties[TAGS])}}Release(){super.Release()}SetEnabled(e){this._inst._SetSolidEnabled(!!e)}IsEnabled(){return this._inst._IsSolidEnabled()}SetTags(tagList){const savedDataMap=
 this._inst.GetSavedDataMap();if(!tagList.trim()){savedDataMap.delete("solidTags");return}let solidTags=savedDataMap.get("solidTags");if(!solidTags){solidTags=new Set;savedDataMap.set("solidTags",solidTags)}solidTags.clear();for(const tag of tagList.split(" "))if(tag)solidTags.add(tag.toLowerCase())}GetTags(){return this._inst.GetSavedDataMap().get("solidTags")||EMPTY_SET}_GetTagsString(){return[...this.GetTags()].join(" ")}SaveToJson(){return{"e":this.IsEnabled()}}LoadFromJson(o){this.SetEnabled(o["e"])}GetPropertyValueByIndex(index){switch(index){case ENABLE:return this.IsEnabled()}}SetPropertyValueByIndex(index,
@@ -5564,6 +5575,7 @@ self.C3_GetObjectRefTable = function () {
 		C3.Behaviors.Fade,
 		C3.Behaviors.Timer,
 		C3.Plugins.Mikal_3DObject,
+		C3.Behaviors.Flash,
 		C3.Behaviors.solid,
 		C3.Behaviors.EightDir,
 		C3.Plugins.Audio,
@@ -5592,6 +5604,10 @@ self.C3_GetObjectRefTable = function () {
 		C3.Plugins.Shape3D.Acts.SetZElevation,
 		C3.Plugins.Sprite.Exps.ZElevation,
 		C3.Plugins.Sprite.Acts.SetPos,
+		C3.Plugins.Mikal_3DObject.Acts.SetRotationOrdered,
+		C3.Plugins.Mikal_3DObject.Exps.XAngle,
+		C3.Plugins.Mikal_3DObject.Exps.ZAngle,
+		C3.Plugins.System.Exps.dt,
 		C3.Plugins.System.Cnds.TriggerOnce,
 		C3.Plugins.Sprite.Acts.SetInstanceVar,
 		C3.Plugins.System.Exps.time,
@@ -5610,7 +5626,6 @@ self.C3_GetObjectRefTable = function () {
 		C3.Plugins.sliderbar.Cnds.CompareValue,
 		C3.Plugins.sliderbar.Acts.SetValue,
 		C3.Plugins.sliderbar.Exps.Value,
-		C3.Plugins.System.Exps.dt,
 		C3.Plugins.System.Cnds.Every,
 		C3.Plugins.System.Exps.random,
 		C3.Plugins.System.Exps.choose,
@@ -5638,12 +5653,15 @@ self.C3_GetObjectRefTable = function () {
 		C3.Plugins.Shape3D.Exps.X,
 		C3.Plugins.Shape3D.Exps.Y,
 		C3.Plugins.Sprite.Acts.StartAnim,
+		C3.Plugins.Shape3D.Cnds.CompareInstanceVar,
+		C3.Behaviors.Flash.Cnds.IsFlashing,
+		C3.Plugins.Sprite.Acts.SubInstanceVar,
+		C3.Behaviors.Flash.Acts.Flash,
 		C3.Plugins.Sprite.Cnds.CompareX,
 		C3.Plugins.Sprite.Acts.SetX,
 		C3.Plugins.Sprite.Cnds.CompareZElevation,
 		C3.Plugins.Sprite.Acts.SetZElevation,
 		C3.Plugins.Shape3D.Cnds.OnDestroyed,
-		C3.Plugins.Shape3D.Cnds.CompareInstanceVar,
 		C3.Plugins.System.Cnds.ForEach,
 		C3.Behaviors.Sin.Exps.Value,
 		C3.Behaviors.Sin.Acts.SetMagnitude,
@@ -5664,10 +5682,15 @@ self.C3_GetObjectRefTable = function () {
 		C3.Plugins.Shape3D.Acts.AddChild,
 		C3.Plugins.Shape3D.Cnds.IsBetweenAngles,
 		C3.Behaviors.Rotate.Acts.SetSpeed,
+		C3.Plugins.Shape3D.Cnds.IsOnScreen,
+		C3.Plugins.Shape3D.Acts.SetHeight,
+		C3.Plugins.Shape3D.Exps.Height,
 		C3.Plugins.Browser.Cnds.IsFullscreen,
 		C3.Plugins.Browser.Acts.CancelFullScreen,
 		C3.Plugins.Browser.Acts.RequestFullScreen,
 		C3.Plugins.System.Acts.GoToLayout,
+		C3.Plugins.Mikal_3DObject.Acts.SetVisible,
+		C3.Plugins.Mikal_3DObject.Cnds.CompareInstanceVar,
 		C3.Plugins.Sprite.Cnds.CompareOpacity,
 		C3.Plugins.Sprite.Acts.SetOpacity,
 		C3.Plugins.Sprite.Exps.Opacity,
@@ -5699,7 +5722,6 @@ self.C3_GetObjectRefTable = function () {
 		C3.Behaviors.EightDir.Exps.VectorX,
 		C3.Behaviors.EightDir.Exps.VectorY,
 		C3.Plugins.Sprite.Acts.RotateTowardPosition,
-		C3.Plugins.Mikal_3DObject.Acts.SetRotationOrdered,
 		C3.Plugins.Sprite.Acts.Destroy,
 		C3.Plugins.Arr.Acts.Destroy,
 		C3.Plugins.System.Cnds.For,
@@ -5722,9 +5744,9 @@ self.C3_GetObjectRefTable = function () {
 		C3.Plugins.Sprite.Exps.BBoxTop,
 		C3.Plugins.Arr.Acts.SetInstanceVar,
 		C3.Plugins.Arr.Acts.SetSize,
-		C3.ScriptsInEvents.E_main_Event244_Act1,
+		C3.ScriptsInEvents.E_main_Event266_Act1,
 		C3.Plugins.Arr.Acts.SetXY,
-		C3.ScriptsInEvents.E_main_Event253_Act1,
+		C3.ScriptsInEvents.E_main_Event275_Act1,
 		C3.Plugins.AdvancedRandom.Acts.SetOctaves,
 		C3.Plugins.AdvancedRandom.Acts.SetSeed,
 		C3.Plugins.System.Acts.SetFunctionReturnValue,
@@ -5740,8 +5762,12 @@ self.C3_GetObjectRefTable = function () {
 		C3.Plugins.Eponesh_GameScore.Cnds.PlayerCompare,
 		C3.Plugins.System.Acts.SetLayerVisible,
 		C3.Plugins.System.Acts.SetLayerInteractive,
+		C3.Plugins.NinePatch.Cnds.IsBoolInstanceVarSet,
+		C3.Plugins.Text.Acts.SetFontColor,
+		C3.Plugins.Text.Acts.SetFontSize,
 		C3.Plugins.TiledBg.Acts.SetImageOffsetX,
 		C3.Plugins.TiledBg.Exps.ImageOffsetX,
+		C3.Plugins.Mikal_3DObject.Exps.YAngle,
 		C3.Plugins.NinePatch.Cnds.CompareInstanceVar,
 		C3.Plugins.Eponesh_GameScore.Acts.LeaderboardOpen,
 		C3.Plugins.TextBox.Cnds.CompareText,
@@ -5891,6 +5917,7 @@ self.C3_JsPropNameTable = [
 	{Meteor: 0},
 	{Aim: 0},
 	{MeteorText: 0},
+	{Flash: 0},
 	{Ship3DObj: 0},
 	{Solid: 0},
 	{"8Direction": 0},
@@ -5902,6 +5929,7 @@ self.C3_JsPropNameTable = [
 	{PlayerSpeed: 0},
 	{PlayerAttackSpeed: 0},
 	{GameStarted: 0},
+	{Life: 0},
 	{GameManager: 0},
 	{OriginX: 0},
 	{OriginY: 0},
@@ -5935,6 +5963,7 @@ self.C3_JsPropNameTable = [
 	{PowerupExplosion3D: 0},
 	{Sine: 0},
 	{Logo: 0},
+	{WhiteFont: 0},
 	{Button: 0},
 	{ButtonText: 0},
 	{BackgroundMenu: 0},
@@ -5946,6 +5975,11 @@ self.C3_JsPropNameTable = [
 	{GamePush: 0},
 	{PlayerNameInput: 0},
 	{ConfigButton: 0},
+	{Titulo: 0},
+	{SuperSaffiraLogo: 0},
+	{LifeNumber: 0},
+	{Ship3DObj2: 0},
+	{SpecialBullet: 0},
 	{Tween: 0},
 	{tunnels: 0},
 	{tunnelData: 0},
@@ -6141,6 +6175,11 @@ self.C3_ExpressionFuncs = [
 		},
 		() => -322,
 		() => 506,
+		p => {
+			const n0 = p._GetNode(0);
+			const f1 = p._GetNode(1).GetBoundMethod();
+			return () => (n0.ExpObject() + (50 * f1()));
+		},
 		p => {
 			const f0 = p._GetNode(0).GetBoundMethod();
 			return () => f0();
@@ -6410,25 +6449,25 @@ self.C3_ExpressionFuncs = [
 		() => "Player",
 		p => {
 			const n0 = p._GetNode(0);
-			return () => (n0.ExpObject() - 15);
-		},
-		p => {
-			const n0 = p._GetNode(0);
 			return () => (n0.ExpObject() - 20);
 		},
 		p => {
 			const n0 = p._GetNode(0);
-			return () => (n0.ExpObject() + 15);
+			return () => (n0.ExpObject() - 10);
 		},
 		p => {
 			const v0 = p._GetNode(0).GetVar();
 			return () => v0.GetValue();
 		},
-		() => "Computer",
 		p => {
 			const n0 = p._GetNode(0);
-			return () => (n0.ExpObject() - 10);
+			return () => (n0.ExpObject() - 15);
 		},
+		p => {
+			const n0 = p._GetNode(0);
+			return () => (n0.ExpObject() + 15);
+		},
+		() => "Computer",
 		p => {
 			const n0 = p._GetNode(0);
 			const n1 = p._GetNode(1);
@@ -6444,6 +6483,7 @@ self.C3_ExpressionFuncs = [
 			return () => (n0.ExpObject() - 30);
 		},
 		() => 1,
+		() => 1.5,
 		() => -1,
 		() => 1000,
 		() => -10,
@@ -6500,6 +6540,16 @@ self.C3_ExpressionFuncs = [
 		() => -40,
 		() => 320,
 		() => 330,
+		p => {
+			const n0 = p._GetNode(0);
+			const f1 = p._GetNode(1).GetBoundMethod();
+			return () => (n0.ExpObject() + (800 * f1()));
+		},
+		p => {
+			const n0 = p._GetNode(0);
+			const f1 = p._GetNode(1).GetBoundMethod();
+			return () => (n0.ExpObject() - (400 * f1()));
+		},
 		() => "UI",
 		() => "Endgame",
 		p => {
@@ -6838,6 +6888,7 @@ self.C3_ExpressionFuncs = [
 		() => "name",
 		() => "Ranking",
 		() => "Menu",
+		() => -281492157629439,
 		p => {
 			const n0 = p._GetNode(0);
 			const f1 = p._GetNode(1).GetBoundMethod();
@@ -6848,10 +6899,11 @@ self.C3_ExpressionFuncs = [
 			const f1 = p._GetNode(1).GetBoundMethod();
 			return () => (n0.ExpObject() + (20 * f1()));
 		},
-		() => "Jogar",
-		() => "Instruções",
+		() => "JOGAR",
+		() => "INSTRUÇÕES",
 		() => "Instrucoes",
 		() => "Voltar",
+		() => "RANKING",
 		() => "score",
 		() => "Confirmar"
 ];
