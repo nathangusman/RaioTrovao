@@ -5717,12 +5717,6 @@ self.C3_GetObjectRefTable = function () {
 		C3.Plugins.NinePatch.Acts.AddChild,
 		C3.Plugins.System.Cnds.IsGroupActive,
 		C3.Plugins.System.Acts.Wait,
-		C3.Plugins.Sprite.Acts.SetOpacity,
-		C3.Plugins.TiledBg.Acts.SetVisible,
-		C3.Plugins.NinePatch.Acts.SetVisible,
-		C3.Plugins.Shape3D.Acts.SetVisible,
-		C3.Behaviors.Fade.Acts.StartFade,
-		C3.Plugins.Shape3D.Acts.SetBoolInstanceVar,
 		C3.Plugins.sliderbar.Cnds.CompareValue,
 		C3.Plugins.sliderbar.Acts.SetValue,
 		C3.Plugins.sliderbar.Exps.Value,
@@ -5750,6 +5744,7 @@ self.C3_GetObjectRefTable = function () {
 		C3.Plugins.Shape3D.Cnds.CompareZElevation,
 		C3.Plugins.Shape3D.Exps.ZElevation,
 		C3.Plugins.Shape3D.Exps.ZHeight,
+		C3.Plugins.Shape3D.Acts.SetBoolInstanceVar,
 		C3.Plugins.Shape3D.Exps.X,
 		C3.Plugins.Shape3D.Exps.Y,
 		C3.Plugins.Sprite.Acts.StartAnim,
@@ -5766,6 +5761,7 @@ self.C3_GetObjectRefTable = function () {
 		C3.Plugins.Sprite.Acts.AddInstanceVar,
 		C3.Plugins.Text.Acts.SetZElevation,
 		C3.Plugins.Text.Acts.SetFontColor,
+		C3.Plugins.Sprite.Acts.SetOpacity,
 		C3.Plugins.Sprite.Exps.Opacity,
 		C3.Plugins.Audio.Acts.SetVolume,
 		C3.Plugins.Audio.Exps.Volume,
@@ -5798,6 +5794,7 @@ self.C3_GetObjectRefTable = function () {
 		C3.Behaviors.Tween.Exps.Value,
 		C3.Plugins.Mikal_3DObject.Cnds.CompareY,
 		C3.Plugins.Mikal_3DObject.Acts.AddChild,
+		C3.Behaviors.Fade.Acts.StartFade,
 		C3.Plugins.Shape3D.Cnds.IsOnScreen,
 		C3.Plugins.Shape3D.Acts.SetHeight,
 		C3.Plugins.Shape3D.Exps.Height,
@@ -5825,23 +5822,6 @@ self.C3_GetObjectRefTable = function () {
 		C3.Plugins.Shape3D.Exps.BBoxLeft,
 		C3.Plugins.Shape3D.Exps.BBoxRight,
 		C3.Plugins.Shape3D.Exps.BBoxBottom,
-		C3.Plugins.Text.Acts.SetHeight,
-		C3.Plugins.System.Exps.viewportheight,
-		C3.Plugins.Text.Acts.SetWidth,
-		C3.Plugins.System.Exps.viewportwidth,
-		C3.Plugins.Text.Acts.SetVAlign,
-		C3.Plugins.Text.Acts.SetHAlign,
-		C3.Plugins.NinePatch.Acts.SetPos,
-		C3.Plugins.Eponesh_GameScore.Cnds.PlayerCompareScore,
-		C3.Plugins.Eponesh_GameScore.Acts.PlayerSetScore,
-		C3.Plugins.Eponesh_GameScore.Acts.PlayerSync,
-		C3.Plugins.Keyboard.Cnds.OnKey,
-		C3.Plugins.System.Acts.SetTimescale,
-		C3.Plugins.System.Exps.timescale,
-		C3.Plugins.Audio.Acts.SetPlaybackRate,
-		C3.Plugins.Audio.Exps.PlaybackRate,
-		C3.Plugins.System.Acts.RestartLayout,
-		C3.Plugins.Mikal_3DObject.Acts.LoadModel,
 		C3.Plugins.Sprite.Acts.SetPosToObject,
 		C3.Plugins.Sprite.Acts.AddChild,
 		C3.Plugins.System.Exps.layoutwidth,
@@ -5875,9 +5855,9 @@ self.C3_GetObjectRefTable = function () {
 		C3.Plugins.Sprite.Exps.BBoxTop,
 		C3.Plugins.Arr.Acts.SetInstanceVar,
 		C3.Plugins.Arr.Acts.SetSize,
-		C3.ScriptsInEvents.E_main_Event361_Act1,
+		C3.ScriptsInEvents.E_main_Event363_Act1,
 		C3.Plugins.Arr.Acts.SetXY,
-		C3.ScriptsInEvents.E_main_Event370_Act1,
+		C3.ScriptsInEvents.E_main_Event372_Act1,
 		C3.Plugins.AdvancedRandom.Acts.SetOctaves,
 		C3.Plugins.AdvancedRandom.Acts.SetSeed,
 		C3.Plugins.System.Acts.SetFunctionReturnValue,
@@ -5890,22 +5870,41 @@ self.C3_GetObjectRefTable = function () {
 		C3.Plugins.Mikal_3DObject.Acts.SetX,
 		C3.Plugins.System.Cnds.CompareVar,
 		C3.Behaviors.EightDir.Acts.SetMaxSpeed,
-		C3.Plugins.Eponesh_GameScore.Acts.ChangeLanguage,
-		C3.Plugins.Eponesh_GameScore.Cnds.PlayerCompare,
-		C3.Plugins.System.Acts.SetLayerVisible,
-		C3.Plugins.System.Acts.SetLayerInteractive,
+		C3.Plugins.Sprite.Exps.ImagePointX,
+		C3.Plugins.Sprite.Exps.ImagePointY,
 		C3.Plugins.NinePatch.Cnds.IsBoolInstanceVarSet,
 		C3.Plugins.Text.Acts.SetFontSize,
 		C3.Plugins.TiledBg.Acts.SetImageOffsetX,
 		C3.Plugins.TiledBg.Exps.ImageOffsetX,
-		C3.Plugins.Mikal_3DObject.Exps.YAngle,
+		C3.Plugins.Sprite.Exps.Angle,
+		C3.Plugins.Mikal_3DObject.Acts.MoveAtAngle,
+		C3.Plugins.Mikal_3DObject.Cnds.PickByUID,
 		C3.Plugins.NinePatch.Cnds.CompareInstanceVar,
+		C3.Plugins.System.Acts.SetLayerVisible,
+		C3.Plugins.System.Acts.SetLayerInteractive,
 		C3.Plugins.Eponesh_GameScore.Acts.LeaderboardOpen,
 		C3.Plugins.TextBox.Cnds.CompareText,
 		C3.Plugins.Eponesh_GameScore.Acts.PlayerSetName,
 		C3.Plugins.TextBox.Exps.Text,
-		C3.Plugins.TextBox.Acts.SetText,
-		C3.Plugins.Eponesh_GameScore.Exps.PlayerName
+		C3.Plugins.Eponesh_GameScore.Acts.PlayerSync,
+		C3.Plugins.System.Cnds.LayerVisible,
+		C3.Plugins.Sprite.Cnds.IsBetweenAngles,
+		C3.Plugins.Sprite.Acts.SetFlipped,
+		C3.Plugins.Mikal_3DObject.Acts.SetYScale,
+		C3.Plugins.Touch.Cnds.OnTapGestureObject,
+		C3.Plugins.Sprite.Exps.AnimationFrame,
+		C3.Plugins.Browser.Acts.GoToURLWindow,
+		C3.Plugins.Camera3D.Exps.CameraX,
+		C3.Plugins.Camera3D.Exps.CameraY,
+		C3.Plugins.Camera3D.Exps.CameraZ,
+		C3.Plugins.Camera3D.Exps.LookX,
+		C3.Plugins.Camera3D.Exps.LookY,
+		C3.Plugins.Mikal_3DObject.Cnds.IsBoolInstanceVarSet,
+		C3.Behaviors.Fade.Acts.RestartFade,
+		C3.Plugins.Mikal_3DObject.Acts.SetBoolInstanceVar,
+		C3.Plugins.Mikal_3DObject.Cnds.CompareOpacity,
+		C3.Plugins.Sprite.Cnds.CompareFrame,
+		C3.Plugins.Sprite.Acts.MoveForward
 	];
 };
 self.C3_JsPropNameTable = [
@@ -6162,6 +6161,20 @@ self.C3_JsPropNameTable = [
 	{maofechadaprefab: 0},
 	{maofechada: 0},
 	{HandHitbox: 0},
+	{target: 0},
+	{currentStep: 0},
+	{TargetSet: 0},
+	{steppedBy: 0},
+	{dis: 0},
+	{debug: 0},
+	{nave2d: 0},
+	{Musica: 0},
+	{URL: 0},
+	{Planets: 0},
+	{TiledBackground: 0},
+	{SolidMenu: 0},
+	{Pulse3DObject4: 0},
+	{PlanetsText: 0},
 	{tunnels: 0},
 	{tunnelData: 0},
 	{Pulses: 0},
@@ -6245,7 +6258,8 @@ self.C3_JsPropNameTable = [
 	{x: 0},
 	{y: 0},
 	{rng: 0},
-	{Amount: 0}
+	{Amount: 0},
+	{naveSpeed: 0}
 ];
 }
 
@@ -6386,371 +6400,45 @@ self.C3_ExpressionFuncs = [
 			return () => n0.ExpInstVar();
 		},
 		() => "SongSpawnTimes",
-		() => 5.5,
+		() => 0.1,
 		() => 7.5,
+		() => 0.5,
 		() => 200,
-		() => "Como",
+		() => "1",
 		() => "",
 		() => 1,
 		() => 6,
-		() => 0.15,
+		() => 0.8,
 		() => 275,
-		() => "é",
+		() => "2",
 		() => 350,
-		() => "que",
-		() => 425,
-		() => "fala?",
-		() => 12,
-		() => 14,
-		() => 225,
-		() => "SA",
-		() => -150,
-		() => 2,
-		() => 3,
-		() => 300,
-		() => "FFI",
-		() => 375,
-		() => "RA",
-		() => 13.5,
-		() => 15,
-		() => 100,
-		() => "Vem",
-		() => 75,
-		() => 0.4,
-		() => "encosta",
-		() => "em",
-		() => -75,
-		() => 0.1,
-		() => "mim",
-		() => 250,
-		() => "Eu",
-		() => 4,
-		() => "sou",
-		() => "assim",
-		() => 17.5,
-		() => 19,
-		() => 400,
-		() => "Um raio",
-		() => -37.5,
-		() => 5,
-		() => "Um trovão",
-		() => -112.5,
-		() => 20,
-		() => 22,
-		() => 7,
-		() => 24,
-		() => 26,
-		() => 8,
-		() => 41,
-		() => 43,
-		() => "Meu",
-		() => -25,
-		() => 9,
+		() => "3",
 		() => 0.3,
-		() => "corpo",
-		() => "a te",
-		() => "encontrar",
-		() => 42.5,
-		() => 45,
-		() => "O raio",
-		() => -100,
-		() => "side",
-		() => 10,
-		() => "beija",
-		() => "o mar",
-		() => 44,
-		() => 46,
-		() => "Eu só",
-		() => 50,
-		() => 11,
-		() => 175,
-		() => "encontro",
-		() => "a paz",
-		() => 325,
-		() => "no teu",
-		() => "olhar",
-		() => 48,
-		() => 49.5,
-		() => 51,
-		() => 13,
-		() => 53,
-		() => 54,
-		() => 55,
-		() => 500,
-		() => "Para",
-		() => "stop",
-		() => 0.2,
-		() => "pa",
-		() => -225,
-		() => 56.5,
-		() => 58,
-		() => 16,
-		() => 60,
-		() => 17,
-		() => 59.5,
-		() => 61,
-		() => 137.5,
-		() => 18,
-		() => 212.5,
-		() => 287.5,
-		() => 362.5,
-		() => 61.5,
-		() => 63,
-		() => 63.5,
-		() => 65,
-		() => 67,
-		() => 21,
-		() => 68,
-		() => 81.8,
-		() => 83,
-		() => 102.5,
-		() => 104,
-		p => {
-			const v0 = p._GetNode(0).GetVar();
-			return () => (81 + v0.GetValue());
-		},
-		p => {
-			const v0 = p._GetNode(0).GetVar();
-			return () => (83 + v0.GetValue());
-		},
-		() => "right",
-		() => 23,
-		() => "te levo",
-		() => "left",
-		() => "pra",
-		() => "outro",
-		() => "mundo",
-		p => {
-			const v0 = p._GetNode(0).GetVar();
-			return () => (85 + v0.GetValue());
-		},
-		() => "Só",
-		() => "down",
-		() => 0.5,
-		() => "temos",
-		() => "um",
-		() => "segundo",
-		() => 25,
-		() => "eu",
-		() => "te",
-		() => "transportar",
-		p => {
-			const v0 = p._GetNode(0).GetVar();
-			return () => (88.5 + v0.GetValue());
-		},
-		p => {
-			const v0 = p._GetNode(0).GetVar();
-			return () => (90 + v0.GetValue());
-		},
-		() => 217.5,
-		() => "Nesse",
-		() => 282.5,
-		() => 142.5,
-		() => "Tudo",
-		() => 27,
-		() => "ta",
-		() => "mais",
-		() => 357.5,
-		() => "vivo",
-		() => 28,
-		() => "tem",
-		() => "brilho",
-		() => 29,
-		() => "cor",
-		p => {
-			const v0 = p._GetNode(0).GetVar();
-			return () => (95.5 + v0.GetValue());
-		},
-		p => {
-			const v0 = p._GetNode(0).GetVar();
-			return () => (97 + v0.GetValue());
-		},
-		() => 30,
-		p => {
-			const v0 = p._GetNode(0).GetVar();
-			return () => (98 + v0.GetValue());
-		},
-		p => {
-			const v0 = p._GetNode(0).GetVar();
-			return () => (100 + v0.GetValue());
-		},
-		() => 31,
-		() => 32,
-		p => {
-			const v0 = p._GetNode(0).GetVar();
-			return () => (102 + v0.GetValue());
-		},
-		p => {
-			const v0 = p._GetNode(0).GetVar();
-			return () => (104 + v0.GetValue());
-		},
-		() => 33,
-		() => 34,
-		() => 35,
-		() => 36,
-		p => {
-			const v0 = p._GetNode(0).GetVar();
-			return () => (109.5 + v0.GetValue());
-		},
-		p => {
-			const v0 = p._GetNode(0).GetVar();
-			return () => (101 + v0.GetValue());
-		},
-		() => 37,
-		p => {
-			const v0 = p._GetNode(0).GetVar();
-			return () => (111.5 + v0.GetValue());
-		},
-		p => {
-			const v0 = p._GetNode(0).GetVar();
-			return () => (113 + v0.GetValue());
-		},
-		() => 38,
-		p => {
-			const v0 = p._GetNode(0).GetVar();
-			return () => (115 + v0.GetValue());
-		},
-		() => 39,
-		p => {
-			const v0 = p._GetNode(0).GetVar();
-			return () => (116.5 + v0.GetValue());
-		},
-		p => {
-			const v0 = p._GetNode(0).GetVar();
-			return () => (118 + v0.GetValue());
-		},
-		() => 40,
-		p => {
-			const v0 = p._GetNode(0).GetVar();
-			return () => (120 + v0.GetValue());
-		},
-		p => {
-			const v0 = p._GetNode(0).GetVar();
-			return () => (122 + v0.GetValue());
-		},
-		() => 42,
-		p => {
-			const v0 = p._GetNode(0).GetVar();
-			return () => (123.5 + v0.GetValue());
-		},
-		p => {
-			const v0 = p._GetNode(0).GetVar();
-			return () => (125 + v0.GetValue());
-		},
-		p => {
-			const v0 = p._GetNode(0).GetVar();
-			return () => (127 + v0.GetValue());
-		},
-		p => {
-			const v0 = p._GetNode(0).GetVar();
-			return () => (129 + v0.GetValue());
-		},
-		p => {
-			const v0 = p._GetNode(0).GetVar();
-			return () => (128.5 + v0.GetValue());
-		},
-		p => {
-			const v0 = p._GetNode(0).GetVar();
-			return () => (130 + v0.GetValue());
-		},
-		p => {
-			const v0 = p._GetNode(0).GetVar();
-			return () => (132 + v0.GetValue());
-		},
-		() => 47,
-		p => {
-			const v0 = p._GetNode(0).GetVar();
-			return () => (134 + v0.GetValue());
-		},
-		p => {
-			const v0 = p._GetNode(0).GetVar();
-			return () => (133.5 + v0.GetValue());
-		},
-		p => {
-			const v0 = p._GetNode(0).GetVar();
-			return () => (135 + v0.GetValue());
-		},
-		() => 49,
-		p => {
-			const v0 = p._GetNode(0).GetVar();
-			return () => (135.5 + v0.GetValue());
-		},
-		p => {
-			const v0 = p._GetNode(0).GetVar();
-			return () => (137 + v0.GetValue());
-		},
-		p => {
-			const v0 = p._GetNode(0).GetVar();
-			return () => (139 + v0.GetValue());
-		},
-		p => {
-			const v0 = p._GetNode(0).GetVar();
-			return () => (140 + v0.GetValue());
-		},
-		p => {
-			const v0 = p._GetNode(0).GetVar();
-			return () => (142 + v0.GetValue());
-		},
-		() => "Te levo",
-		() => 52,
-		() => "para",
-		p => {
-			const v0 = p._GetNode(0).GetVar();
-			return () => (143.5 + v0.GetValue());
-		},
-		p => {
-			const v0 = p._GetNode(0).GetVar();
-			return () => (145 + v0.GetValue());
-		},
-		p => {
-			const v0 = p._GetNode(0).GetVar();
-			return () => (147 + v0.GetValue());
-		},
-		p => {
-			const v0 = p._GetNode(0).GetVar();
-			return () => (149 + v0.GetValue());
-		},
-		p => {
-			const v0 = p._GetNode(0).GetVar();
-			return () => (150.5 + v0.GetValue());
-		},
-		p => {
-			const v0 = p._GetNode(0).GetVar();
-			return () => (152 + v0.GetValue());
-		},
-		p => {
-			const v0 = p._GetNode(0).GetVar();
-			return () => (154 + v0.GetValue());
-		},
-		p => {
-			const v0 = p._GetNode(0).GetVar();
-			return () => (156 + v0.GetValue());
-		},
-		() => 56,
-		p => {
-			const v0 = p._GetNode(0).GetVar();
-			return () => (157.2 + v0.GetValue());
-		},
-		p => {
-			const v0 = p._GetNode(0).GetVar();
-			return () => (159 + v0.GetValue());
-		},
-		() => 57,
+		() => "ACORDA",
+		() => -75,
+		() => 170,
 		() => "TunnelSpeedTimes",
+		() => 27,
 		() => 5000,
+		() => 40,
 		p => {
 			const n0 = p._GetNode(0);
 			const f1 = p._GetNode(1).GetBoundMethod();
 			return () => (n0.ExpObject() + (500 * f1()));
 		},
+		() => 500,
+		() => 43,
 		p => {
 			const n0 = p._GetNode(0);
 			const f1 = p._GetNode(1).GetBoundMethod();
 			return () => (n0.ExpObject() - (5000 * f1()));
 		},
+		() => 68,
 		() => 81,
+		() => 83,
 		() => 85,
 		() => 95,
+		() => 102.5,
 		() => 104.5,
 		p => {
 			const v0 = p._GetNode(0).GetVar();
@@ -6778,15 +6466,41 @@ self.C3_ExpressionFuncs = [
 			return () => (f0(0, (-150)) + 50);
 		},
 		() => "RingSpawnTimes",
+		() => 28,
+		() => 100,
+		() => -100,
 		() => 150,
+		() => 250,
+		() => 300,
+		() => 400,
 		() => 1.7,
 		() => "PowerSpawnTimes",
+		() => 14,
+		() => 15,
+		() => 75,
+		() => 3,
+		() => 2,
+		() => 35,
+		() => 36,
+		() => 42.5,
 		() => 43.5,
+		() => 49.5,
 		() => 50.5,
+		() => 56.5,
 		() => 57.5,
+		() => -37.5,
+		() => 8,
+		p => {
+			const v0 = p._GetNode(0).GetVar();
+			return () => (111.5 + v0.GetValue());
+		},
 		p => {
 			const v0 = p._GetNode(0).GetVar();
 			return () => (112.5 + v0.GetValue());
+		},
+		p => {
+			const v0 = p._GetNode(0).GetVar();
+			return () => (118 + v0.GetValue());
 		},
 		p => {
 			const v0 = p._GetNode(0).GetVar();
@@ -6889,6 +6603,7 @@ self.C3_ExpressionFuncs = [
 		() => 1000,
 		() => -10,
 		() => -750,
+		() => 25,
 		() => -175,
 		() => 110,
 		() => "destroy",
@@ -6899,6 +6614,7 @@ self.C3_ExpressionFuncs = [
 			const f1 = p._GetNode(1).GetBoundMethod();
 			return () => (f0("") - (50 * f1()));
 		},
+		() => 0.4,
 		p => {
 			const n0 = p._GetNode(0);
 			return () => (n0.ExpObject() + 30);
@@ -6935,8 +6651,14 @@ self.C3_ExpressionFuncs = [
 		},
 		() => "orbit",
 		() => 0.75,
+		() => "side",
+		() => "stop",
+		() => "right",
+		() => 30,
 		() => 700,
+		() => "left",
 		() => -700,
+		() => "down",
 		() => "up",
 		() => 450,
 		p => {
@@ -6950,6 +6672,7 @@ self.C3_ExpressionFuncs = [
 			const f2 = p._GetNode(2).GetBoundMethod();
 			return () => C3.lerp(n0.ExpObject(), n1.ExpInstVar(), (2 * f2()));
 		},
+		() => 50,
 		() => "+1",
 		() => -281483566646271,
 		() => "+2",
@@ -6968,6 +6691,8 @@ self.C3_ExpressionFuncs = [
 			return () => C3.lerp(n0.ExpObject(), 1000, (2 * f1()));
 		},
 		() => "cracksize",
+		() => 10,
+		() => 5,
 		() => "Shatter",
 		p => {
 			const n0 = p._GetNode(0);
@@ -7065,35 +6790,6 @@ self.C3_ExpressionFuncs = [
 		() => "Endgame",
 		() => 163,
 		() => 97,
-		p => {
-			const n0 = p._GetNode(0);
-			return () => (0 + n0.ExpInstVar());
-		},
-		p => {
-			const f0 = p._GetNode(0).GetBoundMethod();
-			return () => f0("Score");
-		},
-		() => -2,
-		() => 470,
-		() => 260,
-		() => "Debug",
-		p => {
-			const f0 = p._GetNode(0).GetBoundMethod();
-			return () => (f0() - 0.5);
-		},
-		p => {
-			const f0 = p._GetNode(0).GetBoundMethod();
-			return () => (f0("") - 0.5);
-		},
-		p => {
-			const f0 = p._GetNode(0).GetBoundMethod();
-			return () => (f0() + 0.5);
-		},
-		p => {
-			const f0 = p._GetNode(0).GetBoundMethod();
-			return () => (f0("") + 0.5);
-		},
-		() => "meteor.glb",
 		() => "tunnel",
 		() => "tunnel_init",
 		p => {
@@ -7404,10 +7100,19 @@ self.C3_ExpressionFuncs = [
 			const n0 = p._GetNode(0);
 			return () => (n0.ExpObject() + 33);
 		},
+		() => 0.2,
 		() => "background",
-		() => "name",
-		() => "Ranking",
-		() => "Menu",
+		() => 240,
+		() => 135,
+		() => 176,
+		p => {
+			const n0 = p._GetNode(0);
+			return () => n0.ExpObject(1);
+		},
+		p => {
+			const n0 = p._GetNode(0);
+			return () => (("[outline=#ffffff]" + n0.ExpInstVar()) + "[/outline]");
+		},
 		p => {
 			const n0 = p._GetNode(0);
 			const f1 = p._GetNode(1).GetBoundMethod();
@@ -7418,13 +7123,84 @@ self.C3_ExpressionFuncs = [
 			const f1 = p._GetNode(1).GetBoundMethod();
 			return () => (n0.ExpObject() + (20 * f1()));
 		},
+		p => {
+			const n0 = p._GetNode(0);
+			return () => (n0.ExpObject() - 180);
+		},
+		p => {
+			const n0 = p._GetNode(0);
+			return () => (n0.ExpObject() + 90);
+		},
+		p => {
+			const f0 = p._GetNode(0).GetBoundMethod();
+			return () => (75 * f0());
+		},
+		() => 174,
+		() => 175,
 		() => "JOGAR",
 		() => "INSTRUÇÕES",
 		() => "Instrucoes",
+		() => "Menu",
 		() => "Voltar",
 		() => "RANKING",
 		() => "score",
-		() => "Confirmar"
+		() => "Confirmar",
+		() => "Ranking",
+		() => "NewWindow",
+		p => {
+			const n0 = p._GetNode(0);
+			const n1 = p._GetNode(1);
+			return () => (75 + (3 * (n0.ExpInstVar() - n1.ExpInstVar())));
+		},
+		p => {
+			const f0 = p._GetNode(0).GetBoundMethod();
+			const n1 = p._GetNode(1);
+			const f2 = p._GetNode(2).GetBoundMethod();
+			return () => C3.lerp(f0(), n1.ExpObject(), (1 * f2()));
+		},
+		p => {
+			const f0 = p._GetNode(0).GetBoundMethod();
+			const n1 = p._GetNode(1);
+			const f2 = p._GetNode(2).GetBoundMethod();
+			return () => C3.lerp(f0(), (n1.ExpObject() + 176), (1 * f2()));
+		},
+		p => {
+			const f0 = p._GetNode(0).GetBoundMethod();
+			const n1 = p._GetNode(1);
+			const f2 = p._GetNode(2).GetBoundMethod();
+			return () => C3.lerp(f0(), n1.ExpObject(), (2 * f2()));
+		},
+		p => {
+			const v0 = p._GetNode(0).GetVar();
+			return () => (0.4 * (75 / v0.GetValue()));
+		},
+		() => "NavePath",
+		p => {
+			const n0 = p._GetNode(0);
+			const n1 = p._GetNode(1);
+			const n2 = p._GetNode(2);
+			const n3 = p._GetNode(3);
+			return () => C3.distanceTo(n0.ExpObject(), n1.ExpObject(), n2.ExpObject(), n3.ExpObject());
+		},
+		p => {
+			const n0 = p._GetNode(0);
+			const n1 = p._GetNode(1);
+			const n2 = p._GetNode(2);
+			const n3 = p._GetNode(3);
+			const n4 = p._GetNode(4);
+			const n5 = p._GetNode(5);
+			const n6 = p._GetNode(6);
+			return () => (C3.lerp(n0.ExpInstVar(), n1.ExpObject(), C3.unlerp(n2.ExpInstVar(), 0, C3.distanceTo(n3.ExpObject(), n4.ExpObject(), n5.ExpObject(), n6.ExpObject()))) + 1);
+		},
+		p => {
+			const n0 = p._GetNode(0);
+			return () => (n0.ExpObject() + 1);
+		},
+		p => {
+			const v0 = p._GetNode(0).GetVar();
+			const f1 = p._GetNode(1).GetBoundMethod();
+			return () => (v0.GetValue() * f1());
+		}
 ];
 
 
