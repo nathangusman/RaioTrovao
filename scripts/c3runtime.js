@@ -5822,6 +5822,7 @@ self.C3_GetObjectRefTable = function () {
 		C3.Plugins.Shape3D.Exps.BBoxLeft,
 		C3.Plugins.Shape3D.Exps.BBoxRight,
 		C3.Plugins.Shape3D.Exps.BBoxBottom,
+		C3.Plugins.System.Acts.SetBoolVar,
 		C3.Plugins.Sprite.Acts.SetPosToObject,
 		C3.Plugins.Sprite.Acts.AddChild,
 		C3.Plugins.System.Exps.layoutwidth,
@@ -5848,7 +5849,6 @@ self.C3_GetObjectRefTable = function () {
 		C3.Plugins.Camera3D.Acts.LookAtPosition,
 		C3.Plugins.Sprite.Cnds.PickByUID,
 		C3.Plugins.System.Cnds.CompareBoolVar,
-		C3.Plugins.System.Acts.SetBoolVar,
 		C3.Plugins.Sprite.Exps.BBoxBottom,
 		C3.Plugins.Sprite.Exps.BBoxLeft,
 		C3.Plugins.Sprite.Exps.BBoxRight,
@@ -5872,16 +5872,18 @@ self.C3_GetObjectRefTable = function () {
 		C3.Behaviors.EightDir.Acts.SetMaxSpeed,
 		C3.Plugins.Sprite.Exps.ImagePointX,
 		C3.Plugins.Sprite.Exps.ImagePointY,
+		C3.Plugins.Mikal_3DObject.Acts.SetBoolInstanceVar,
 		C3.Plugins.NinePatch.Cnds.IsBoolInstanceVarSet,
 		C3.Plugins.Text.Acts.SetFontSize,
-		C3.Plugins.TiledBg.Acts.SetImageOffsetX,
-		C3.Plugins.TiledBg.Exps.ImageOffsetX,
-		C3.Plugins.Sprite.Exps.Angle,
-		C3.Plugins.Mikal_3DObject.Acts.MoveAtAngle,
-		C3.Plugins.Mikal_3DObject.Cnds.PickByUID,
-		C3.Plugins.NinePatch.Cnds.CompareInstanceVar,
 		C3.Plugins.System.Acts.SetLayerVisible,
 		C3.Plugins.System.Acts.SetLayerInteractive,
+		C3.Plugins.TiledBg.Acts.SetImageOffsetX,
+		C3.Plugins.TiledBg.Exps.ImageOffsetX,
+		C3.Plugins.Mikal_3DObject.Acts.MoveAtAngle,
+		C3.Plugins.Mikal_3DObject.Cnds.IsBoolInstanceVarSet,
+		C3.Plugins.Mikal_3DObject.Exps.YAngle,
+		C3.Plugins.Sprite.Exps.Angle,
+		C3.Plugins.NinePatch.Cnds.CompareInstanceVar,
 		C3.Plugins.Eponesh_GameScore.Acts.LeaderboardOpen,
 		C3.Plugins.TextBox.Cnds.CompareText,
 		C3.Plugins.Eponesh_GameScore.Acts.PlayerSetName,
@@ -5890,7 +5892,6 @@ self.C3_GetObjectRefTable = function () {
 		C3.Plugins.System.Cnds.LayerVisible,
 		C3.Plugins.Sprite.Cnds.IsBetweenAngles,
 		C3.Plugins.Sprite.Acts.SetFlipped,
-		C3.Plugins.Mikal_3DObject.Acts.SetYScale,
 		C3.Plugins.Touch.Cnds.OnTapGestureObject,
 		C3.Plugins.Sprite.Exps.AnimationFrame,
 		C3.Plugins.Browser.Acts.GoToURLWindow,
@@ -5899,12 +5900,11 @@ self.C3_GetObjectRefTable = function () {
 		C3.Plugins.Camera3D.Exps.CameraZ,
 		C3.Plugins.Camera3D.Exps.LookX,
 		C3.Plugins.Camera3D.Exps.LookY,
-		C3.Plugins.Mikal_3DObject.Cnds.IsBoolInstanceVarSet,
 		C3.Behaviors.Fade.Acts.RestartFade,
-		C3.Plugins.Mikal_3DObject.Acts.SetBoolInstanceVar,
 		C3.Plugins.Mikal_3DObject.Cnds.CompareOpacity,
 		C3.Plugins.Sprite.Cnds.CompareFrame,
-		C3.Plugins.Sprite.Acts.MoveForward
+		C3.Plugins.Sprite.Acts.MoveForward,
+		C3.Plugins.System.Acts.AddVar
 	];
 };
 self.C3_JsPropNameTable = [
@@ -6050,6 +6050,8 @@ self.C3_JsPropNameTable = [
 	{Meteor: 0},
 	{Aim: 0},
 	{MeteorText: 0},
+	{isMenu: 0},
+	{DoABarrelRoll: 0},
 	{Flash: 0},
 	{Ship3DObj: 0},
 	{Solid: 0},
@@ -6190,6 +6192,7 @@ self.C3_JsPropNameTable = [
 	{flashingRed: 0},
 	{jumpToTime: 0},
 	{goStart: 0},
+	{BeatDemo: 0},
 	{default_tunnelCircleGranularity: 0},
 	{default_tunnelSplineGranularity: 0},
 	{default_radius: 0},
@@ -6259,7 +6262,8 @@ self.C3_JsPropNameTable = [
 	{y: 0},
 	{rng: 0},
 	{Amount: 0},
-	{naveSpeed: 0}
+	{naveSpeed: 0},
+	{navePirueta: 0}
 ];
 }
 
@@ -7113,6 +7117,8 @@ self.C3_ExpressionFuncs = [
 			const n0 = p._GetNode(0);
 			return () => (("[outline=#ffffff]" + n0.ExpInstVar()) + "[/outline]");
 		},
+		() => "Menu",
+		() => "PlanetsMinigame",
 		p => {
 			const n0 = p._GetNode(0);
 			const f1 = p._GetNode(1).GetBoundMethod();
@@ -7125,25 +7131,27 @@ self.C3_ExpressionFuncs = [
 		},
 		p => {
 			const n0 = p._GetNode(0);
-			return () => (n0.ExpObject() - 180);
-		},
-		p => {
-			const n0 = p._GetNode(0);
 			return () => (n0.ExpObject() + 90);
 		},
 		p => {
 			const f0 = p._GetNode(0).GetBoundMethod();
 			return () => (75 * f0());
 		},
-		() => 174,
-		() => 175,
+		p => {
+			const v0 = p._GetNode(0).GetVar();
+			return () => (0 + v0.GetValue());
+		},
+		p => {
+			const n0 = p._GetNode(0);
+			return () => (270 + n0.ExpObject());
+		},
 		() => "JOGAR",
 		() => "INSTRUÇÕES",
 		() => "Instrucoes",
-		() => "Menu",
 		() => "Voltar",
 		() => "RANKING",
 		() => "score",
+		() => "COMETA ALBÚM",
 		() => "Confirmar",
 		() => "Ranking",
 		() => "NewWindow",
@@ -7190,7 +7198,7 @@ self.C3_ExpressionFuncs = [
 			const n4 = p._GetNode(4);
 			const n5 = p._GetNode(5);
 			const n6 = p._GetNode(6);
-			return () => (C3.lerp(n0.ExpInstVar(), n1.ExpObject(), C3.unlerp(n2.ExpInstVar(), 0, C3.distanceTo(n3.ExpObject(), n4.ExpObject(), n5.ExpObject(), n6.ExpObject()))) + 1);
+			return () => (C3.lerp(n0.ExpInstVar(), n1.ExpObject(), C3.unlerp(n2.ExpInstVar(), 0, C3.distanceTo(n3.ExpObject(), n4.ExpObject(), n5.ExpObject(), n6.ExpObject()))) + 10);
 		},
 		p => {
 			const n0 = p._GetNode(0);
@@ -7200,6 +7208,15 @@ self.C3_ExpressionFuncs = [
 			const v0 = p._GetNode(0).GetVar();
 			const f1 = p._GetNode(1).GetBoundMethod();
 			return () => (v0.GetValue() * f1());
+		},
+		() => 359,
+		p => {
+			const f0 = p._GetNode(0).GetBoundMethod();
+			return () => f0(5, 10);
+		},
+		p => {
+			const f0 = p._GetNode(0).GetBoundMethod();
+			return () => (360 * f0());
 		}
 ];
 
